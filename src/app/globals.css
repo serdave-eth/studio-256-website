@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom font faces */
+@font-face {
+  font-family: '8bitOperatorPlus-Bold';
+  src: url('/fonts/8bitOperatorPlus-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '8bitOperatorPlus-Regular';
+  src: url('/fonts/8bitOperatorPlus-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pixel Coleco';
+  src: url('/fonts/Pixel Coleco.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pixel Gosub';
+  src: url('/fonts/Pixel Gosub.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pixel ModeX';
+  src: url('/fonts/Pixel ModeX.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pixel NES';
+  src: url('/fonts/Pixel NES.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pixel Tandy';
+  src: url('/fonts/Pixel Tandy.otf') format('opentype');
+}
+
+/* Continue adding @font-face rules for each font file */
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,11 +59,99 @@
 }
 
 body {
+  font-family: 'Pixel NES', sans-serif; /* Apply the regular font style */
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  ) rgb(var(--background-start-rgb));
 }
+
+.bold-font {
+  font-family: 'Pixel NES', sans-serif; /* Apply the bold font style for bold text */
+}
+
+/* Typewriter effect styles */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+h1 {
+  overflow: hidden;
+  border-right: .15em solid black; /* The typewriter cursor */
+  white-space: nowrap;
+  letter-spacing: .15em; /* Adjust as needed */
+  font-family: 'Pixel NES', monospace;
+  line-height: 1.2;
+}
+
+p {
+  font-family: '8bitOperatorPlus-Regular', sans-serif;
+}
+
+.main-container, .info-container {
+  /* Apply any specific styling or overrides here */
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 600px) { /* Adjust the width as needed */
+  .main-container, .info-container {
+    /* Adjust styling for narrower screens */
+  }
+}
+
+/* ... other styles ... */
+
+.main-container {
+  position: relative;
+  width: 100%; /* Use 100% width to fill the parent container */
+}
+
+.dynamic-header-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: auto; /* Allow the container to grow with content, up to the max-width */
+  max-width: 1000px; /* Set a max-width if you know the maximum size of the header content */
+}
+
+.info-container {
+  position: absolute;
+  top: 100%; /* Position it right below the main-container */
+  left: 0; /* Align it to the left edge of the main-container */
+  width: 100%; /* Match the width of the main-container */
+}
+
+/* ... other styles ... */
+
+
+
+
+.typed-cursor {
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+  margin-left: 0.05em; /* Adjust the space */
+  margin-top: 0.05em;
+}
+
+.fixed-width-container {
+  display: flex;
+  align-items: center; /* Keeps items vertically aligned */
+  width: 500px; /* Set your desired width */
+  /* Other styles if needed */
+}
+
+
+/* Define the blink keyframes */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
